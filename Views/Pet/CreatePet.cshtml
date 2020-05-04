@@ -1,0 +1,116 @@
+﻿@model PetBook.Models.Pet
+@{
+    ViewData["Title"] = "Create a Pet";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<div class="container-fluid" style="background-color: transparent">
+
+    <!--This is the container for the body render-->
+    <div class="container-fluid">
+        <div class="card mb-lg-1" style="max-width:1200px; background-color: transparent; border-width: 0px">
+            <div class="row">
+
+                <!--This is the profile image-->
+                <div class="col-md-3" style="padding: 30px">
+                    <img src="~/ProfilePic.png" alt="User Profile" class="img-thumbnail">
+
+                    <!--This is the side navigation bar-->
+                    <!--TODO-->
+                    <ul class="nav flex-column">
+                        <li class="nav-item" style="padding-top:10px">
+                            <a class="nav-link" asp-area="" asp-controller="Pet" asp-action="CreatePet">My Pets Profiles</a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Veterinarian" asp-action="Create">Veterinarian Profile</a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="CreateCalendar">Add Calendar Event</a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="EditCalendar">Edit Calendar Event</a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="DeleteCalendar">Delete Calendar Event</a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SiteInformation"></a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-6" style="padding-left:0px">
+
+                    <h4>Pet</h4>
+                    <hr />
+
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group">
+                            <label asp-for="PetId" class="control-label"></label>
+                            <input asp-for="PetId" class="form-control" />
+                            <span asp-validation-for="PetId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PetName" class="control-label"></label>
+                            <input asp-for="PetName" class="form-control" />
+                            <span asp-validation-for="PetName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PetSpecies" class="control-label"></label>
+                            <input asp-for="PetSpecies" class="form-control" />
+                            <span asp-validation-for="PetSpecies" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PetBreed" class="control-label"></label>
+                            <input asp-for="PetBreed" class="form-control" />
+                            <span asp-validation-for="PetBreed" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PetSex" class="control-label"></label>
+                            <input asp-for="PetSex" class="form-control" />
+                            <span asp-validation-for="PetSex" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Age" class="control-label"></label>
+                            <input asp-for="Age" class="form-control" />
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PetImage" class="control-label"></label>
+                            <input asp-for="PetImage" class="form-control" />
+                            <span asp-validation-for="PetImage" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PetProfileImagePath" class="control-label"></label>
+                            <input asp-for="PetProfileImagePath" class="form-control" />
+                            <span asp-validation-for="PetProfileImagePath" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-primary" />
+                        </div>
+                    </form>
+                </div>
+
+
+                <div>
+                    <a asp-action="Index">Back to List</a>
+                </div>
+
+                @section Scripts {
+                    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

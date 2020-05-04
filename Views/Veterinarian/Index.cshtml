@@ -1,0 +1,78 @@
+﻿@model IEnumerable<PetBook.Models.Veterinarian>
+
+@{
+    ViewData["Title"] = "Index Vet";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VetEMail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VetStreetAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TownOrCity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VetPhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VetProfileImagePath)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VetEMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VetStreetAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TownOrCity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VetPhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VetProfileImagePath)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.VetId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.VetId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.VetId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

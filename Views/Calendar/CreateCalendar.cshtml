@@ -1,0 +1,119 @@
+﻿@model PetBook.Models.Calendar
+
+@{
+    ViewData["Title"] = "Create Event";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>PetBook</title>
+
+</head>
+<body>
+    <div class="container-fluid" style="background-color: transparent">
+
+        <!--This is the container for the body render-->
+        <div class="container-fluid">
+            <div class="card mb-lg-1" style="max-width:1200px; background-color: transparent; border-width: 0px">
+                <div class="row">
+
+                    <!--This is the profile image-->
+                    <div class="col-md-3" style="padding: 30px">
+                        <img src="~/ProfilePic.png" alt="User Profile" class="img-thumbnail">
+
+                        <!--This is the side navigation bar-->
+                        <!--TODO-->
+                        <ul class="nav flex-column">
+                            <li class="nav-item" style="padding-top:10px">
+                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="DetailsCalendar">View Calendar</a>
+                            </li>
+                            <!--TODO-->
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="CreateCalendar">Add Calendar Event</a>
+                            </li>
+                            <!--TODO-->
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="EditCalendar">Edit Calendar Event</a>
+                            </li>
+                            <!--TODO-->
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="DeleteCalendar">Delete Calendar Event</a>
+                            </li>
+                            <!--TODO-->
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SiteInformation"></a>
+                            </li>
+                            <!--TODO-->
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
+                    <div class="col-6" style="background-color:transparent; padding-left:50px">
+
+                        <h1>Add Event</h1>
+
+                        <h4></h4>
+                        <hr />
+
+                        <div>
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="CalendarId" class="control-label"></label>
+                                    <input asp-for="CalendarId" class="form-control" />
+                                    <span asp-validation-for="CalendarId" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="EntryCreated" class="control-label"></label>
+                                    <input asp-for="EntryCreated" class="form-control" />
+                                    <span asp-validation-for="EntryCreated" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="EntryTitle" class="control-label"></label>
+                                    <input asp-for="EntryTitle" class="form-control" />
+                                    <span asp-validation-for="EntryTitle" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="EntryNotes" class="control-label"></label>
+                                    <input asp-for="EntryNotes" class="form-control" />
+                                    <span asp-validation-for="EntryNotes" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="PetCalendar" class="control-label"></label>
+                                    <input asp-for="PetCalendar" class="form-control" />
+                                    <span asp-validation-for="PetCalendar" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div>
+                            <a asp-action="Index">Back to List</a>
+                        </div>
+                    </div>
+
+                    @section Scripts {
+                        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<PetBook.Models.ClientPet>
+
+@{
+    ViewData["Title"] = "List Pets";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<div class="container-fluid" style="background-color: transparent">
+
+    <!--This is the container for the body render-->
+    <div class="container-fluid">
+        <div class="card mb-lg-1" style="max-width:1200px; background-color: transparent; border-width: 0px">
+            <div class="row">
+
+                <!--This is the profile image-->
+                <div class="col-md-3" style="padding: 30px">
+                    <img src="~/ProfilePic.png" alt="User Profile" class="img-thumbnail">
+
+                    <!--This is the side navigation bar-->
+                    <!--TODO-->
+                    <ul class="nav flex-column">
+                        <li class="nav-item" style="padding-top:10px">
+                            <a class="nav-link" asp-area="" asp-controller="Pet" asp-action="CreatePet">My Pets Profiles</a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Veterinarians" asp-action="CreateVet">Veterinarian Profile</a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="CreateCalendar">Add Calendar Event</a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="EditCalendar">Edit Calendar Event</a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="DeleteCalendar">Delete Calendar Event</a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SiteInformation"></a>
+                        </li>
+                        <!--TODO-->
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+                        </li>
+                    </ul>
+                </div>
+                <h1>PetIndex</h1>
+
+                <p>
+                    <a asp-action="Create">Create New</a>
+                </p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Client)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Pet)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Client.ClientId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Pet.PetId)
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.IdexNumber">Edit</a> |
+                                    <a asp-action="Details" asp-route-id="@item.IdexNumber">Details</a> |
+                                    <a asp-action="Delete" asp-route-id="@item.IdexNumber">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>

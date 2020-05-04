@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PetBook</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  
+   
+
+
+</head>
+
+<body>
+    <style>
+        body {
+            background-image: url(../PetBookBG.png);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-transparent border-bottom box-shadow mb-3">
+            <div class="container">
+                <!--This is the navigation bar left image-->
+                <div class="row">
+                    <div class="col-2">
+                        <img src="~/hunterdog.png" style="float:right" alt="hunterdog">
+                    </div>
+                </div>
+                <!--This is the navigation bar-->
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <partial name="_LoginPartial" />
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="SiteInformation"></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!--This is the navigation bar Welcome to PetBook-->
+                    <ul class="navbar-nav flex-grow-1">
+                        <div class="col-md-3">
+                        </div>
+                        <h1 class="display-4" style="color:black; padding-left:60px">Welcome to PetBook</h1>
+                    </ul>
+                </div>
+            </div>
+
+
+
+           
+            <!--This is the navigation bar far right image-->
+            <div class="row">
+                <div class="col-11">
+                    <img src="~/CompanyLogo.png" style="float:right" alt="Company Logo">
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+
+
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+
+
+    <div class="row"></div>
+
+    <div class="container">
+        <footer class="border-top footer text-muted" style="position:relative; padding: 5px">
+
+            <div class="row"></div>
+            <div class="col-12">
+                <div class="container">
+                    &copy; 2020 - PetBook - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+                <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                <script src="~/js/site.js" asp-append-version="true"></script>
+                @RenderSection("Scripts", required: false)
+            </div>
+        </footer>
+
+    </div>
+
+
+
+
+</body>
+   
+</html>

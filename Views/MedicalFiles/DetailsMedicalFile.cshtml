@@ -1,0 +1,76 @@
+﻿@model IEnumerable<PetBook.Models.MedicalFile>
+
+@{
+    ViewData["Title"] = "List Medical File";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>PetBook</title>
+
+</head>
+
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Appointment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Medication)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Procedure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vaccination)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Appointment.AppointmentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Medication.MedicationId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pet.PetId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Procedure.ProcedureId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Vaccination.VaccinationId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.MedicalFileId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.MedicalFileId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.MedicalFileId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</html>

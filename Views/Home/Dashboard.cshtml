@@ -1,0 +1,135 @@
+﻿@model PetBook.Models.Client
+@{
+    ViewData["Title"] = "Profile Dashboard";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>PetBook</title>
+
+</head>
+
+
+<body>
+
+    <div class="container-fluid" style="background-color: transparent">
+
+        <!--This is the container for the body render-->
+        <div class="container-fluid">
+            <div class="card mb-lg-1" style="max-width:1200px; background-color: transparent; border-width: 0px">
+                <div class="row">
+
+                    <!--This is the profile image-->
+                    <div class="col-md-3" style="padding: 30px">
+                        <img src="~/ProfilePic.png" alt="User Profile" class="img-thumbnail">
+
+                        <!--This is the side navigation bar-->
+                        <!--TODO-->
+                        <ul class="nav flex-column">
+                            <li class="nav-item" style="padding-top:10px">
+                                <a class="nav-link" asp-area="" asp-controller="Pet" asp-action="CreatePet">My Pets Profiles</a>
+                            </li>
+                            <!--TODO-->
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Veterinarian" asp-action="Create">My Veterinarian Profile</a>
+                            </li>
+                            <!--TODO-->
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="CreateCalendar">Add Calendar Event</a>
+                            </li>
+                            <!--TODO-->
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="EditCalendar">Edit Calendar Event</a>
+                            </li>
+                            <!--TODO-->
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="DeleteCalendar">Delete Calendar Event</a>
+                            </li>
+                            <!--TODO-->
+                            <li class="nav-item">
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SiteInformation"></a>
+                            </li>
+                            <!--TODO-->
+                            <li class="nav-item">
+                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!--This is the Clients Name Heading-->
+                    <div class="col-md-9" style="padding-left:50px; border:thin">
+                        <div class="card-body" ; style="padding:20px">
+                            <h2 class="card-deck"><label asp-for="FirstName"></label><label asp-for="LastName"></label><br /></h2>
+                        </div>
+
+                        <!--This is the Clients address card-->
+                        <div class="row"></div>
+                        <div class="card" style="width: 35rem; background-color: transparent; border-width: 0px">
+                            <div class="card-body" ; style="padding:20px">
+                                <h5 class="card-title">Address</h5>
+
+                                <p class="card-text"><label asp-for="UserStreetAddress"></label></br><label asp-for="TownOrCity"></label><br /><label asp-for="State"></label><br /><label asp-for="Country"></label></p>
+                            </div>
+                        </div>
+                        <!--This is the Clients e-mail and telephone number card-->
+                        <div class="row"></div>
+                        <div class="card" style="width: 35rem; background-color: transparent; border-width: 0px">
+                            <div class="card-body" ; style="padding:20px">
+                                <h5 class="card-title">Telephone Numbers and E-mail Address</h5>
+
+                                <p class="card-text">E-mail Address: <label asp-for="UserEMail"></label></br>Telephone: <label asp-for="ClientPhoneNumber"></label><br />
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--Start of the events card that lists the calendar events of each pet on the Home Page / Dashboard-->
+
+    <div class="card text-center" style="background-color:transparent">
+        <div class="card" style="background-color:transparent">
+            <div class="card-body">
+
+                <h5 class="card-title">Upcoming Calendar Snap Shot</h5>
+                <p class="card-text"><partial>@Html</partial></p>
+                <p class="card-text"><partial>@Html</partial></p>
+                <p class="card-text"><partial>@Html</partial></p>
+                <p class="card-text"><partial>@Html</partial></p>
+                <p class="card-text"><partial>@Html</partial></p>
+                <p class="card-text"><partial>@Html</partial></p>
+                <p class="card-text"><partial>@Html</partial></p>
+                <p class="card-text"><partial>@Html</partial></p>
+                <p class="card-text"><partial>@Html</partial></p>
+                <p class="card-text"><partial>@Html</partial></p>
+                <p class="card-text"><partial>@Html</partial></p>
+
+                <a href="#" class="btn btn-outline-secondary">Calendar</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+﻿@model PetBook.Models.Pet
+@{
+    ViewData["Title"] = "Remove a Pet";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h3>Are you sure you want to remove this pet?</h3>
+<div>
+    <h4>Pet</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PetName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PetName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PetSpecies)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PetSpecies)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PetBreed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PetBreed)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PetSex)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PetSex)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PetImage)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PetImage)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PetProfileImagePath)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PetProfileImagePath)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PetId" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

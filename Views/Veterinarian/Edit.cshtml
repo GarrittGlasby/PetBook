@@ -1,0 +1,67 @@
+﻿@model PetBook.Models.Veterinarian
+
+@{
+    ViewData["Title"] = "Edit Vet";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Veterinarian</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="VetId" />
+            <div class="form-group">
+                <label asp-for="VetName" class="control-label"></label>
+                <input asp-for="VetName" class="form-control" />
+                <span asp-validation-for="VetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VetEMail" class="control-label"></label>
+                <input asp-for="VetEMail" class="form-control" />
+                <span asp-validation-for="VetEMail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VetStreetAddress" class="control-label"></label>
+                <input asp-for="VetStreetAddress" class="form-control" />
+                <span asp-validation-for="VetStreetAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TownOrCity" class="control-label"></label>
+                <input asp-for="TownOrCity" class="form-control" />
+                <span asp-validation-for="TownOrCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="State" class="control-label"></label>
+                <input asp-for="State" class="form-control" />
+                <span asp-validation-for="State" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VetPhoneNumber" class="control-label"></label>
+                <input asp-for="VetPhoneNumber" class="form-control" />
+                <span asp-validation-for="VetPhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VetProfileImagePath" class="control-label"></label>
+                <input asp-for="VetProfileImagePath" class="form-control" />
+                <span asp-validation-for="VetProfileImagePath" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
