@@ -30,7 +30,7 @@
                         <img src="~/hunterdog.png" style="float:right" alt="hunterdog">
                     </div>
                 </div>
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="SiteInformation">PetBook</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Dashboard">PetBook</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -43,16 +43,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dashboard">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Calendar" asp-action="Index">Calendar</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Calendar" asp-action="Index">Events List</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="DetailsClient">Account Settings</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Client" asp-action="DetailsClient">Your Account</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="MedicalFiles" asp-action="DetailsMedicalFile">Pet Medical Files</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Contacts" asp-action="ContactsList">Contacts</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="MedicalFiles" asp-action="DetailsMedicalFile">Medical Files</a>
                         </li>
                     </ul>
 
@@ -86,6 +83,7 @@
             <div class="row"></div>
             <div class="col-12">
                 <div class="container">
+                    @{ var theMonth = DateTime.Now.Month; }
                     &copy; 2020 - PetBook - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                 </div>
                 <script src="~/lib/jquery/dist/jquery.min.js"></script>

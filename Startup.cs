@@ -61,13 +61,19 @@ namespace PetBook
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
-                    endpoints.MapControllerRoute(
-                        name: "default",
-                        pattern: "{controller=Home}/{action=PetBookHomePage}");
+            endpoints.MapControllerRoute(
+               name: "default",
+               pattern: "{controller=Client}/{action=FindClient}",
+        defaults: new { controller = "Client", action = "FindClient" }
+               );
+                endpoints.MapControllerRoute(
+                        name: "Home",
+                        pattern: "{controller=Home}/{action=PetBookHomePage}/{id?}");
                     endpoints.MapRazorPages();
                 
             });
            
+
         }
     }
 }

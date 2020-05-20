@@ -1,6 +1,6 @@
-﻿@model PetBook.Models.Client
+﻿@model PetBook.Models.Pet
 @{
-    ViewData["My Dashboard"] = "Profile Dashboard";
+    ViewData["Pet Profile"] = "Pet Profile";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
@@ -34,20 +34,17 @@
 
                         <!--This is the profile image-->
                         <div class="col-md-3" style="padding: 30px">
-                            <img src="~/ProfilePic.png" alt="User Profile" class="img-thumbnail">
+                            <img src="~/Dog.jpg" alt="Pet Profile" class="img-thumbnail">
 
                             <!--This is the side navigation bar-->
                             <!--TODO-->
                             <ul class="nav flex-column">
                                 <li class="nav-item" style="padding-top:10px">
-                                    <a class="nav-link" asp-area="" asp-controller="Pet" asp-action="PetIndex">My Pets Profiles</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Pet" asp-action="CreatePet">Add Pet</a>
+                                    <a class="nav-link" asp-area="" asp-controller="MedicalFiles" asp-action="PetMedFile">@Model.PetName Medical File</a>
                                 </li>
                                 <!--TODO-->
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Veterinarian" asp-action="Create">Veterinarian Profile</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Veterinarian" asp-action="Details">@Model.PetName Veterinarian Profile</a>
                                 </li>
                                 <!--TODO-->
                                 <li class="nav-item">
@@ -59,42 +56,50 @@
                                 </li>
                                 <!--TODO-->
                                 <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="DeleteCalendar">Delete Event</a>
+                                    <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="IndexCalendar">List Event</a>
                                 </li>
                                 <!--TODO-->
-                               
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Dashboard">Return to your Dashboard</a>
+                                </li>
+                                <!--TODO-->
                                 <li class="nav-item">
                                     <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"></a>
                                 </li>
+                                
                             </ul>
                         </div>
                                                 
                         <!--This is the Clients Name Heading-->
                         <div class="col-md-9" style="padding-left:50px; border:thin">
                             <div class="card-body" ; style="padding:20px">
-                                <h2 class="card-deck">@Model.FirstName @Model.LastName<br /></h2>
+                                <h2 class="card-deck">@Model.PetName<br /></h2>
                             </div>
+
+
+                            <!--This is the Pets Biometric data cards-->
                         
-                            <!--This is the Clients address card-->
                             <div class="row"></div>
                             <div class="card" style="width: 35rem; background-color: transparent; border-width: 0px">
                                 <div class="card-body" ; style="padding:20px">
-                                    <h5 class="card-title">Address</h5>
+                                    <h5 class="card-title">Pet Id Number</h5><p class="card-text">@Model.PetId</p></br>
 
-                                    <p class="card-text">@Model.UserStreetAddress</br>@Model.TownOrCity<br />@Model.State<br />@Model.Country</p>
+                                    <h5 class="card-title">Breed</h5><p class="card-text">@Model.PetBreed</p>
+
+                                    <h5 class="card-title">Sex</h5><p class="card-text">@Model.PetSex</p>
+
+                                    <h5 class="card-title">Species</h5><p class="card-text">@Model.PetSpecies</p>
                                 </div>
                             </div>
-                            <!--This is the Clients e-mail and telephone number card-->
-                            <div class="row"></div>
-                            <div class="card" style="width: 35rem; background-color: transparent; border-width: 0px">
-                                <div class="card-body" ; style="padding:20px">
-                                    <h5 class="card-title">Telephone Number and E-mail Address</h5>
-
-                                    <p class="card-text">E-mail Address: @Model.UserEMail</br>Telephone: @Model.ClientPhoneNumber<br />
-                                </div>
+                            
+                            <div class="col-10" style="text-decoration-color:lime">
+                                <td>
+                                    <a asp-action="EditPet" asp-route-id="@Model.PetId">Edit Profile</a> |
+                                </td>
+                                <td>
+                                    <a asp-action="RemovePet" asp-route-id="@Model.PetId">Delete Pet</a> |
+                                </td>
                             </div>
-
-
                         </div>
 
 
@@ -104,13 +109,15 @@
 
                 </div>
             </div>
+    <br />
+    <br />
             <!--Start of the events card that lists the calendar events of each pet on the Home Page / Dashboard-->
 
             <div class="card text-center" style="background-color:transparent">
                 <div class="card" style="background-color:transparent">
                     <div class="card-body">
 
-                        <h5 class="card-title">Upcoming Calendar Snap Shot</h5>
+                        <h5 class="card-title">@Model.PetName Events Snap Shot</h5>
                         <p class="card-text"><partial>@Model.ClientPet</partial></p>
                         <p class="card-text"><partial>@Model.ClientPet</partial></p>
                         <p class="card-text"><partial>@Model.ClientPet</partial></p>

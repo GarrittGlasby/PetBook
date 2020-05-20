@@ -1,88 +1,176 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Internal;
+using PetBook.Data;
+using PetBook.Models;
+
 
 namespace PetBook.Controllers
 {
     public class PetController : Controller
     {
-    
-        // GET: Pet/Details/5
-        public ActionResult PetIndex(int id)
+        private PetbookContext dbContext;
+
+        public PetController(PetbookContext dbContext)
         {
-            return View();
+            this.dbContext = dbContext;
+        }
+
+        // GET: Pet/Details/5
+        public IActionResult PetIndex()
+        {
+            var model = dbContext.Client
+                                        .Where(client => client.UserEMail == User.Identity.Name)
+                                        .SingleOrDefault();
+
+            if (model.UserEMail == User.Identity.Name)
+            {
+
+                return View(this.dbContext.Pet);
+            }
+        
+            else
+            {
+                return Redirect("CreatePet");
+            }
+   
+                
+          
+           
         }
 
         // GET: Pet/Create
-        public ActionResult CreatePet(int id)
+        public IActionResult CreatePet()
         {
-            return View();
+      
+                return View();
+           
         }
 
         // POST: Pet/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddPet(IFormCollection collection)
+        public ActionResult CreatePetPost(Pet Pet)
         {
             try
             {
-                
+                dbContext.Add(Pet);
+                dbContext.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("PetIndex");
+
+             
             }
             catch
             {
-                return View();
+                return View("PetIndex");
             }
         }
 
         // GET: Pet/Edit/5
-        public ActionResult EditPet(int id)
+        public IActionResult EditPet(int id)
         {
-            return View();
+
+            var Pet = dbContext.Pet
+                                      .Where(Pet => Pet.PetId == id)
+                                      .SingleOrDefault();
+
+            if (Pet.PetId == id)
+            {
+
+                return View(Pet);
+            }
+            else
+            {
+                return Redirect("PetIndex");
+            }
+
         }
+
+       
 
         // POST: Pet/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPet(int id, IFormCollection collection)
+        public IActionResult EditPetPost(Pet Pet)
         {
             try
             {
-                // TODO: Add update logic here
+                dbContext.Update(Pet);
+                dbContext.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
+                return Redirect("PetIndex");
+
+
             }
             catch
             {
-                return View();
+                return View("PetIndex");
             }
         }
 
         // GET: Pet/Delete/5
         public ActionResult RemovePet(int id)
         {
-            return View();
+            var Pet = dbContext.Pet
+                                     .Where(Pet => Pet.PetId == id)
+                                     .SingleOrDefault();
+
+            if (Pet.PetId == id)
+            {
+
+                return View(Pet);
+            }
+            else
+            {
+                return Redirect("PetIndex");
+            }
+           
         }
 
         // POST: Pet/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult RemovePet(int id, IFormCollection collection)
+        public ActionResult RemovePet(Pet Pet)
         {
             try
             {
-                // TODO: Add delete logic here
+                dbContext.Remove(Pet);
+                dbContext.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("PetIndex");
+
+
             }
             catch
             {
-                return View();
+                return View("PetIndex");
             }
+        }
+
+        public ActionResult PetDashboard(int id)
+        {
+            var Pet = dbContext.Pet
+                                      .Where(Pet => Pet.PetId == id)
+                                      .SingleOrDefault();
+
+            if (Pet.PetId == id)
+            {
+                
+                return View(Pet);
+            }
+            else
+            {
+                return Redirect("PetIndex");
+            }
+           
         }
     }
 }

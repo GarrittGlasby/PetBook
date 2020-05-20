@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetBook.Data;
 
 namespace PetBook.Migrations
 {
     [DbContext(typeof(PetbookContext))]
-    partial class PetbookContextModelSnapshot : ModelSnapshot
+    [Migration("20200518172036_Registry")]
+    partial class Registry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -326,6 +328,36 @@ namespace PetBook.Migrations
                     b.ToTable("Pet");
                 });
 
+            modelBuilder.Entity("PetBook.Models.PetCalendar", b =>
+                {
+                    b.Property<int>("IdexNumber")
+                        .HasColumnName("Idex Number")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("CalendarId")
+                        .HasColumnName("Calendar ID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MedicalFileId")
+                        .HasColumnName("Medical File ID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PetId")
+                        .HasColumnName("Pet ID")
+                        .HasColumnType("int");
+
+                    b.HasKey("IdexNumber")
+                        .HasName("PK__PetCalen__36E7A3C7BD7B7EAA");
+
+                    b.HasIndex("CalendarId");
+
+                    b.HasIndex("MedicalFileId");
+
+                    b.HasIndex("PetId");
+
+                    b.ToTable("PetCalendar");
+                });
+
             modelBuilder.Entity("PetBook.Models.PetMed", b =>
                 {
                     b.Property<int>("IdexNumber")
@@ -490,6 +522,24 @@ namespace PetBook.Migrations
                         .WithMany("MedicalFile")
                         .HasForeignKey("VaccinationId")
                         .HasConstraintName("FK__MedicalFi__Vacci__34C8D9D1");
+                });
+
+            modelBuilder.Entity("PetBook.Models.PetCalendar", b =>
+                {
+                    b.HasOne("PetBook.Models.Calendar", "Calendar")
+                        .WithMany("PetCalendar")
+                        .HasForeignKey("CalendarId")
+                        .HasConstraintName("FK__PetCalend__Calen__2B3F6F97");
+
+                    b.HasOne("PetBook.Models.MedicalFile", "MedicalFile")
+                        .WithMany("PetCalendar")
+                        .HasForeignKey("MedicalFileId")
+                        .HasConstraintName("FK__PetCalend__Medic__29572725");
+
+                    b.HasOne("PetBook.Models.Pet", "Pet")
+                        .WithMany("PetCalendar")
+                        .HasForeignKey("PetId")
+                        .HasConstraintName("FK__PetCalend__Pet I__2A4B4B5E");
                 });
 
             modelBuilder.Entity("PetBook.Models.PetMed", b =>

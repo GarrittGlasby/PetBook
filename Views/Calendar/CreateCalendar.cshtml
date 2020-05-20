@@ -1,7 +1,8 @@
 ﻿@model PetBook.Models.Calendar
 
+
 @{
-    ViewData["Title"] = "Create Event";
+    ViewData["Create Event"] = "Create Event";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
@@ -33,23 +34,23 @@
                         <!--TODO-->
                         <ul class="nav flex-column">
                             <li class="nav-item" style="padding-top:10px">
-                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="DetailsCalendar">View Calendar</a>
+                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="IndexCalendar">View Events</a>
                             </li>
                             <!--TODO-->
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="CreateCalendar">Add Calendar Event</a>
+                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="CreateCalendar">Add Event</a>
                             </li>
                             <!--TODO-->
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="EditCalendar">Edit Calendar Event</a>
+                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="EditCalendar">Edit Event</a>
                             </li>
                             <!--TODO-->
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="DeleteCalendar">Delete Calendar Event</a>
+                                <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="DeleteCalendar">Delete Event</a>
                             </li>
                             <!--TODO-->
                             <li class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SiteInformation"></a>
+                                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Dashboard">Return to Dashboard</a>
                             </li>
                             <!--TODO-->
                             <li class="nav-item">
@@ -68,13 +69,9 @@
                         <hr />
 
                         <div>
-                            <form asp-action="Create">
+                            <form asp-action="CreateCalendarPost">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                                <div class="form-group">
-                                    <label asp-for="CalendarId" class="control-label"></label>
-                                    <input asp-for="CalendarId" class="form-control" />
-                                    <span asp-validation-for="CalendarId" class="text-danger"></span>
-                                </div>
+
                                 <div class="form-group">
                                     <label asp-for="EntryCreated" class="control-label"></label>
                                     <input asp-for="EntryCreated" class="form-control" />
@@ -85,25 +82,28 @@
                                     <input asp-for="EntryTitle" class="form-control" />
                                     <span asp-validation-for="EntryTitle" class="text-danger"></span>
                                 </div>
+
                                 <div class="form-group">
                                     <label asp-for="EntryNotes" class="control-label"></label>
                                     <input asp-for="EntryNotes" class="form-control" />
                                     <span asp-validation-for="EntryNotes" class="text-danger"></span>
                                 </div>
+
                                 <div class="form-group">
-                                    <label asp-for="PetCalendar" class="control-label"></label>
-                                    <input asp-for="PetCalendar" class="form-control" />
-                                    <span asp-validation-for="PetCalendar" class="text-danger"></span>
+                                    <label asp-for="EntryActionDate" class="control-label"></label>
+                                    <input asp-for="EntryActionDate" class="form-control" />
+                                    <span asp-validation-for="EntryActionDate" class="text-danger"></span>
                                 </div>
+
                                 <div class="form-group">
-                                    <input type="submit" value="Create" class="btn btn-primary" />
+                                    <input type="submit" value="Create Event" class="btn btn-primary" />
                                 </div>
                             </form>
                         </div>
 
 
                         <div>
-                            <a asp-action="Index">Back to List</a>
+                            <a asp-action="IndexCalendar">Back to List</a>
                         </div>
                     </div>
 

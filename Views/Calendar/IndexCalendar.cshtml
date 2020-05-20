@@ -1,0 +1,58 @@
+﻿@model IEnumerable<PetBook.Models.Calendar>
+
+@{
+    ViewData["Title"] = "List Events";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+
+<div>
+    <h4>Events List</h4>
+    <hr />
+    <dl class="row">
+        
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CalendarId)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EntryCreated)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EntryTitle)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EntryActionDate)
+            </dt>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.EntryNotes)
+            </dt>
+        
+        </dl>
+        
+    <dl class="row">
+        @foreach (var item in Model)
+        {
+            <dd class="col-sm-10">
+                @Html.DisplayFor(ModelItem => item.CalendarId)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(ModelItem => item.EntryCreated)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(ModelItem => item.EntryTitle)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(ModelItem => item.EntryActionDate)
+            </dd>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(ModelItem => item.EntryNotes)
+            </dd>
+
+         }
+    </dl>
+</div>
+        
+
+
+
+

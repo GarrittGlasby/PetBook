@@ -1,7 +1,7 @@
 ﻿@model PetBook.Models.Calendar
 
 @{
-    ViewData["Title"] = "Delete Event";
+    ViewData["Delete Event"] = "Delete Event";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
@@ -60,32 +60,32 @@
                                 @Html.DisplayNameFor(model => model.EntryCreated)
                             </dt>
                             <dd class="col-9">
-                                @Html.DisplayFor(model => model.EntryCreated)
+                                @Model.EntryCreated)
                             </dd>
                             <dt class="col-9">
                                 @Html.DisplayNameFor(model => model.EntryTitle)
                             </dt>
                             <dd class="col-9">
-                                @Html.DisplayFor(model => model.EntryTitle)
+                                @Model.EntryTitle)
                             </dd>
                             <dt class="col-9">
                                 @Html.DisplayNameFor(model => model.EntryActionDate)
                             </dt>
                             <dd class="col-9">
-                                @Html.DisplayFor(model => model.EntryActionDate)
+                                @Model.EntryActionDate)
                             </dd>
                             <dt class="col-9">
                                 @Html.DisplayNameFor(model => model.EntryNotes)
                             </dt>
                             <dd class="col-9">
-                                @Html.DisplayFor(model => model.EntryNotes)
+                                @Model.EntryNotes)
                             </dd>
                         </dl>
 
-                        <form asp-action="Delete">
+                        <form asp-action="DeleteCalendar">
                             <input type="hidden" asp-for="CalendarId" />
                             <input type="submit" value="Delete" class="btn btn-danger" /> |
-                            <a asp-action="Index">Back to List</a>
+                            <a asp-action="IndexCalendar">Back to List</a>
                         </form>
                     </div>
 

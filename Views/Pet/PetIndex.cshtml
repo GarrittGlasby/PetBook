@@ -1,7 +1,8 @@
-﻿@model IEnumerable<PetBook.Models.ClientPet>
+﻿@model IEnumerable<PetBook.Models.Pet>
+
 
 @{
-    ViewData["Title"] = "List Pets";
+    ViewData["My Pets"] = "List Pets";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
@@ -29,15 +30,15 @@
                         </li>
                         <!--TODO-->
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="CreateCalendar">Add Calendar Event</a>
+                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="CreateCalendar">Add Event</a>
                         </li>
                         <!--TODO-->
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="EditCalendar">Edit Calendar Event</a>
+                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="EditCalendar">Edit Event</a>
                         </li>
                         <!--TODO-->
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="DeleteCalendar">Delete Calendar Event</a>
+                            <a class="nav-link" asp-area="" asp-controller="Calendar" asp-action="DeleteCalendar">Delete Event</a>
                         </li>
                         <!--TODO-->
                         <li class="nav-item">
@@ -49,39 +50,47 @@
                         </li>
                     </ul>
                 </div>
-                <h1>PetIndex</h1>
+                <div class="col-7">
+                    <h1>My Pets</h1>
+                    <br />
 
-                <p>
-                    <a asp-action="Create">Create New</a>
-                </p>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Client)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Pet)
-                            </th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var item in Model)
-                        {
+                    <br />
+
+                    <p>
+                        <a asp-controller="Pet" asp-action="CreatePet">Create Pet Profile</a>
+                    </p>
+
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PetId)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.PetName)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
                             <tr>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Client.ClientId)
+                                    @Html.DisplayFor(ModelItem => item.PetId)
                                 </td>
                                 <td>
-                                    @Html.DisplayFor(modelItem => item.Pet.PetId)
+                                    @Html.DisplayFor(ModelItem => item.PetName)
                                 </td>
                                 <td>
-                                    <a asp-action="Edit" asp-route-id="@item.IdexNumber">Edit</a> |
-                                    <a asp-action="Details" asp-route-id="@item.IdexNumber">Details</a> |
-                                    <a asp-action="Delete" asp-route-id="@item.IdexNumber">Delete</a>
+
+                                    <a asp-action="PetDashboard" asp-route-id="@item.PetId">Pet Profile</a> |
+
                                 </td>
                             </tr>
-                        }
-                    </tbody>
-                </table>
+                            }
+                        </tbody>
+                    </table>
+                </div>

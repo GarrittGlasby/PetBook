@@ -21,9 +21,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.DotNetAppHost" Version="3.1.2" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
     <PackageReference Include="netfx-System.Collections.Generic.IEnumerable.EmptyIfNull" Version="1.1.0" />
     <PackageReference Include="netfx-System.Collections.Generic.IEnumerable.Traverse" Version="1.1.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="1.7.1" />
+    <PackageReference Include="System.Linq.Queryable" Version="4.3.0" />
   </ItemGroup>
 
 
@@ -37,7 +39,6 @@
   <ItemGroup>
     <Folder Include="Views\Medication\" />
     <Folder Include="Views\MedicalProcedure\" />
-    <Folder Include="Views\Account\" />
     <Folder Include="Views\Vaccination\" />
     <Folder Include="wwwroot\css\" />
   </ItemGroup>

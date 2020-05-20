@@ -26,7 +26,6 @@ namespace PetBook.Data
         public DbSet<MedicalProcedure> MedicalProcedure { get; set; }
         public DbSet<Medication> Medication { get; set; }
         public DbSet<Pet> Pet { get; set; }
-        public DbSet<PetCalendar> PetCalendar { get; set; }
         public DbSet<PetMed> PetMed { get; set; }
         public DbSet<Vaccination> Vaccination { get; set; }
         public DbSet<Veterinarian> Veterinarian { get; set; }
@@ -253,38 +252,7 @@ namespace PetBook.Data
                 entity.Property(e => e.PetSpecies).HasColumnName("Pet Species");
             });
 
-            modelBuilder.Entity<PetCalendar>(entity =>
-            {
-                entity.HasKey(e => e.IdexNumber)
-                    .HasName("PK__PetCalen__36E7A3C7BD7B7EAA");
-
-                entity.Property(e => e.IdexNumber)
-                    .HasColumnName("Idex Number")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.CalendarId).HasColumnName("Calendar ID");
-
-                entity.Property(e => e.MedicalFileId).HasColumnName("Medical File ID");
-
-                entity.Property(e => e.PetId).HasColumnName("Pet ID");
-
-                entity.HasOne(d => d.Calendar)
-                    .WithMany(p => p.PetCalendar)
-                    .HasForeignKey(d => d.CalendarId)
-                    .HasConstraintName("FK__PetCalend__Calen__2B3F6F97");
-
-                entity.HasOne(d => d.MedicalFile)
-                    .WithMany(p => p.PetCalendar)
-                    .HasForeignKey(d => d.MedicalFileId)
-                    .HasConstraintName("FK__PetCalend__Medic__29572725");
-
-                entity.HasOne(d => d.Pet)
-                    .WithMany(p => p.PetCalendar)
-                    .HasForeignKey(d => d.PetId)
-                    .HasConstraintName("FK__PetCalend__Pet I__2A4B4B5E");
-            });
-
-            modelBuilder.Entity<PetMed>(entity =>
+             modelBuilder.Entity<PetMed>(entity =>
             {
                 entity.HasKey(e => e.IdexNumber)
                     .HasName("PK__PetMed__36E7A3C746D9B238");

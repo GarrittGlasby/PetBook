@@ -11,77 +11,78 @@
     <h4>Client</h4>
     <hr />
     <dl class="row">
-
+       
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
+            @Model.FirstName
         </dd>
 
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.MiddleName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.MiddleName)
+            @Model.MiddleName
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.LastName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
+            @Model.LastName
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.UserEMail)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserEMail)
+            @Model.UserEMail
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.UserStreetAddress)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.UserStreetAddress)
+            @Model.UserStreetAddress
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TownOrCity)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.TownOrCity)
+            @Model.TownOrCity
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.State)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.State)
+            @Model.State
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Country)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Country)
+            @Model.Country
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DateOfProfileCreation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DateOfProfileCreation)
+            @Model.DateOfProfileCreation
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ClientPhoneNumber)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ClientPhoneNumber)
+            @Model.ClientPhoneNumber
         </dd>
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ClientProfileImagePath)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ClientProfileImagePath)
+            @Model.ClientProfileImagePath
         </dd>
+        
     </dl>
 </div>
 <div>
 
-    <a asp-action="DetailsClient">Back to List</a>
+    <a asp-action="EditClient">Edit Information</a>
 </div>

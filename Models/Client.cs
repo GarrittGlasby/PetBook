@@ -16,8 +16,7 @@ namespace PetBook.Models
             ClientPet = new HashSet<ClientPet>();
             ClientVet = new HashSet<ClientVet>();
         }
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+
         [Display(Name = "Client Id #")]
         public int ClientId { get; set; }
 
@@ -51,10 +50,6 @@ namespace PetBook.Models
         public string State { get; set; }
 
         [Required]
-        [Display(Name = "Zip Code")]
-        public int ZipCode { get; set; }
-
-        [Required]
         [Display(Name = "Country")]
         public string Country { get; set; }
 
@@ -73,27 +68,7 @@ namespace PetBook.Models
         public virtual ICollection<ClientVet> ClientVet { get; set; }
     
        
-        public string Name
-        {
-            get
-            {
-                return string.Format("{0} {1}", this.FirstName, this.LastName);
-            }
-        }
-        public string Adderess
-        {
-            get
-            {
-                return string.Format("{0} {1} {2} {3}", this.UserStreetAddress, this.TownOrCity, this.ZipCode, this.Country);
-            }
-        }
-        public string ClientContactDetails
-        {
-            get
-            {
-                return string.Format("{0} {1}", this.UserEMail, this.ClientPhoneNumber);
-            }
-        }
+ 
         
         
         

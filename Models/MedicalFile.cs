@@ -8,7 +8,6 @@ namespace PetBook.Models
     {
         public MedicalFile()
         {
-            PetCalendar = new HashSet<PetCalendar>();
             PetMed = new HashSet<PetMed>();
         }
 
@@ -30,7 +29,6 @@ namespace PetBook.Models
         public virtual Pet Pet { get; set; }
         public virtual MedicalProcedure Procedure { get; set; }
         public virtual Vaccination Vaccination { get; set; }
-        public virtual ICollection<PetCalendar> PetCalendar { get; set; }
         public virtual ICollection<PetMed> PetMed { get; set; }
     }
 }

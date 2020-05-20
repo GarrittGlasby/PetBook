@@ -8,8 +8,9 @@ namespace PetBook.Models
     {
         public Calendar()
         {
-            PetCalendar = new HashSet<PetCalendar>();
+
         }
+        
         [Display(Name = "Calendar Id #")]
         public int CalendarId { get; set; }
         [Display(Name = "Date Entry Created")]
@@ -21,6 +22,5 @@ namespace PetBook.Models
         [Display(Name = "Enrty Notes")]
         public string EntryNotes { get; set; }
 
-        public virtual ICollection<PetCalendar> PetCalendar { get; set; }
     }
 }

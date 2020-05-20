@@ -4,91 +4,185 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PetBook.Data;
+using PetBook.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace PetBook.Controllers
 {
     public class CalendarController : Controller
     {
-        // GET: Calendar
-        public ActionResult Index()
-        {
-            return View();
-        }
+        private PetbookContext dbContext;
 
-        // GET: Calendar/Details/5
-        public ActionResult DetailsCalendar(int id)
+        public CalendarController(PetbookContext dbContext)
+        {
+            this.dbContext = dbContext;
+        }
+        // GET: Calendar
+        public IActionResult IndexCalendar()
+        {
+            var model = dbContext.Client
+                                     .Where(client => client.UserEMail == User.Identity.Name)
+                                     .SingleOrDefault();
+
+            if (model.UserEMail == User.Identity.Name)
+            {
+
+                var cal = this.dbContext.Calendar.AsEnumerable<Calendar>();
+                  
+                return View(cal);
+            }
+            else
+            {
+                return View("You currently have no events");
+            }
+            
+        }
+        public IActionResult DetailsCalendar(Calendar cal)
+        {
+            return View(cal);
+        }
+        
+        // GET: Calendar/Create
+        public IActionResult CreateCalendar()
         {
             
-            return View();
-        }
-
-        // GET: Calendar/Create
-        public ActionResult CreateCalendar()
-        {
-            return View();
+                
+                return View();
         }
 
         // POST: Calendar/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CreateCalendar(IFormCollection collection)
+        public IActionResult CreateCalendarPost(Calendar cal)
         {
             try
             {
-                // TODO: Add insert logic here
+                var model = dbContext.Client
+                                    .Where(client => client.UserEMail == User.Identity.Name)
+                                    .SingleOrDefault();
 
-                return RedirectToAction(nameof(Index));
+                if (model.UserEMail == User.Identity.Name)
+                {
+
+                    var PetCal = this.dbContext.Calendar.AsEnumerable()
+                        .Select(PetCal => PetCal.CalendarId);
+                    int [] CalId = PetCal.ToArray();
+                    cal.CalendarId = HighestId(CalId);
+                    cal.CalendarId++;
+
+
+                    dbContext.Add(cal);
+                    dbContext.SaveChanges();
+
+                    return View("DetailsCalendar");
+                }
+                return View("DetailsCalendar");
             }
             catch
             {
-                return View();
+                return View("IndexCalendar");
             }
         }
 
         // GET: Calendar/Edit/5
-        public ActionResult EditCalendar(int id)
+        public IActionResult EditCalendar(int id)
         {
-            return View();
+            var model = dbContext.Client
+                                    .Where(client => client.UserEMail == User.Identity.Name)
+                                    .SingleOrDefault();
+
+            if (model.UserEMail == User.Identity.Name)
+            {
+                var cal = dbContext.Calendar
+                    .Select(cal => cal.CalendarId == id);
+
+                return View(cal);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
 
         // POST: Calendar/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditCalendar(int id, IFormCollection collection)
+        public IActionResult EditCalendar(Calendar calendar)
         {
             try
             {
-                // TODO: Add update logic here
+                dbContext.Update(calendar);
+                dbContext.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("IndexCalendar");
             }
             catch
             {
-                return View();
+                return Redirect("~/Shared/Error");
             }
         }
 
         // GET: Calendar/Delete/5
-        public ActionResult DeleteCalendar(int id)
+        public IActionResult DeleteCalendar(int id)
         {
-            return View();
+            var model = dbContext.Client
+                                    .Where(client => client.UserEMail == User.Identity.Name)
+                                    .SingleOrDefault();
+
+            if (model.UserEMail == User.Identity.Name)
+            {
+                var cal = dbContext.Calendar
+                    .Select(cal => cal.CalendarId == id);
+
+                return View(cal);
+            }
+            else
+            {
+                return View("Error");
+            }
         }
 
         // POST: Calendar/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteCalendar(int id, IFormCollection collection)
+        public IActionResult DeleteCalendar(Calendar calendar)
         {
             try
             {
-                // TODO: Add delete logic here
+                dbContext.Remove(calendar);
+                dbContext.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("IndexCalendar");
             }
             catch
             {
-                return View();
+                return Redirect("~/Shared/Error");
             }
+        }
+        public static int HighestId(int [] CalId)
+        {
+            int id = 0;
+            for (int i = 0; i < CalId.Length; i++)
+            {
+                
+                if (CalId[i] == 0)
+                {
+                    continue;
+                }
+                else if (CalId[i] < id)
+                {
+                    continue;
+                }
+                else if (CalId[i] > id)
+                {
+                    id = CalId[i];
+                    continue;
+                }
+                return id;
+            }
+            return id;
         }
     }
 }

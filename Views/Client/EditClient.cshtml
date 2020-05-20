@@ -1,8 +1,110 @@
-﻿
+﻿@model PetBook.Models.Client
+
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Edit Client"] = "EditClient";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
-<h1>View</h1>
+<h3>Thanks for being Amazing and up-to-date.</h3>
+<br />
+<h1>Edit Profile Information</h1>
+
+<hr />
+<div class="container">
+
+    <form asp-action="Edit Client">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="FirstName" class="control-label"></label>
+                    <input asp-for="FirstName" class="form-control" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="MiddleName" class="control-label"></label>
+                    <input asp-for="MiddleName" class="form-control" />
+                    <span asp-validation-for="MiddleName" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="LastName" class="control-label"></label>
+                    <input asp-for="LastName" class="form-control" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="UserEMail" class="control-label"></label>
+                    <input asp-for="UserEMail" class="form-control" />
+                    <span asp-validation-for="UserEMail" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="UserStreetAddress" class="control-label"></label>
+                    <input asp-for="UserStreetAddress" class="form-control" />
+                    <span asp-validation-for="UserStreetAddress" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="TownOrCity" class="control-label"></label>
+                    <input asp-for="TownOrCity" class="form-control" />
+                    <span asp-validation-for="TownOrCity" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="State" class="control-label"></label>
+                    <input asp-for="State" class="form-control" />
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="Country" class="control-label"></label>
+                    <input asp-for="Country" class="form-control" />
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <div class="form-group">
+                    <label asp-for="ClientPhoneNumber" class="control-label"></label>
+                    <input asp-for="ClientPhoneNumber" class="form-control" />
+                    <span asp-validation-for="ClientPhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6" style="padding:20px">
+                    <div class="file btn btn-lg btn-outline-secondary">
+                        Upload Profile Picture
+                        <input type="File" name="ClientProfileImagePath" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Update Profile" class="btn btn-primary" asp-action="EditClientPost" />
+        </div>
+    </form>
+
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 

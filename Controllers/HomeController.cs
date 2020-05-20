@@ -7,34 +7,44 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PetBook.Models;
+using PetBook.Data;
+using PetBook.Controllers;
 
 
 namespace PetBook.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        
-        public HomeController(ILogger<HomeController> logger)
+
+        private PetbookContext dbContext;
+        public HomeController(PetbookContext dbContext)
         {
-            _logger = logger;
-            
+            this.dbContext = dbContext;
         }
 
-     
-
-       
-        public ActionResult Dashboard()
+        public IActionResult Dashboard()
         {
-           
-            return View();
+            var model = dbContext.Client
+                                     .Where(client => client.UserEMail == User.Identity.Name)
+                                     .SingleOrDefault();
+
+            if (model.UserEMail == User.Identity.Name)
+            {
+
+                return View(model);
+            }
+            else
+            {
+                return View("PetBookHomePage");
+            }
         }
+      
         public IActionResult PetBookHomePage()
         {
-
             return View();
         }
+
 
         public IActionResult Privacy()
         {

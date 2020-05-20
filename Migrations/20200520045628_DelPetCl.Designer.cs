@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PetBook.Data;
 
 namespace PetBook.Migrations
 {
     [DbContext(typeof(PetbookContext))]
-    partial class PetbookContextModelSnapshot : ModelSnapshot
+    [Migration("20200520045628_DelPetCl")]
+    partial class DelPetCl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

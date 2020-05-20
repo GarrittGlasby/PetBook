@@ -10,7 +10,6 @@ namespace PetBook.Models
         {
             ClientPet = new HashSet<ClientPet>();
             MedicalFile = new HashSet<MedicalFile>();
-            PetCalendar = new HashSet<PetCalendar>();
             PetMed = new HashSet<PetMed>();
         }
         [Display(Name = "Pet Id #")]
@@ -41,7 +40,6 @@ namespace PetBook.Models
 
         public virtual ICollection<ClientPet> ClientPet { get; set; }
         public virtual ICollection<MedicalFile> MedicalFile { get; set; }
-        public virtual ICollection<PetCalendar> PetCalendar { get; set; }
         public virtual ICollection<PetMed> PetMed { get; set; }
     }
 }

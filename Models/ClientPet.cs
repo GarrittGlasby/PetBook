@@ -14,5 +14,10 @@ namespace PetBook.Models
 
         public virtual Client Client { get; set; }
         public virtual Pet Pet { get; set; }
+
+        internal object Select(Func<object, object> p, int idexNumber, int? clientId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

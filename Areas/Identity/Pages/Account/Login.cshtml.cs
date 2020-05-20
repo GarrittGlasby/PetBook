@@ -21,7 +21,7 @@ namespace PetBook.Areas.Identity.Pages.Account
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, 
+        public LoginModel(SignInManager<IdentityUser> signInManager,
             ILogger<LoginModel> logger,
             UserManager<IdentityUser> userManager)
         {
@@ -63,18 +63,13 @@ namespace PetBook.Areas.Identity.Pages.Account
 
             returnUrl = returnUrl ?? Url.Content("~/Home/Error");
 
-            // Clear the existing external cookie to ensure a clean login process
-            await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
 
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
-            ReturnUrl = returnUrl;
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             
-            returnUrl = returnUrl ?? Url.Content("~/Home/Dashboard");
+            returnUrl = returnUrl ?? Url.Content("~/Client/FindClient/{Id?}");
 
             if (ModelState.IsValid)
             {
@@ -84,7 +79,7 @@ namespace PetBook.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl = returnUrl ?? Url.Content("~/Home/Dashboard"));
+                    return LocalRedirect(returnUrl = returnUrl ?? Url.Content("~/Home/Dashboard/{id}"));
                 }
                 if (result.RequiresTwoFactor)
                 {
